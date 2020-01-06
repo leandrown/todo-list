@@ -11,13 +11,25 @@ let todos = [
 
 function renderTodos() {
     listElement.innerHTML = '';
-    
+
     for (todo of todos) {
         let todoElement = document.createElement('li');
         let todoText = document.createTextNode(todo);
 
+        let linkElement = document.createElement('a');
+        let linkText = document.createTextNode('Excluir');
+
+        let pos = todos.indexOf(todo);
+        
+        linkElement.setAttribute('href', '#');
+        linkElement.setAttribute('onclick', 'deleteTodo(' + pos + ')');
+
         todoElement.appendChild(todoText);
+        todoElement.appendChild(linkElement);
+
         listElement.appendChild(todoElement);
+
+        linkElement.appendChild(linkText);
     }
 }
 
@@ -32,3 +44,8 @@ function addTodo() {
 }
 
 buttonElement.onclick = addTodo;
+
+function deleteTodo(pos) {
+    todos.splice(pos, 1);
+    renderTodos();
+}
