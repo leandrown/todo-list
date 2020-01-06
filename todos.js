@@ -8,3 +8,15 @@ let todos = [
     'Estudar C# e ASP.NET Core',
     'Acessar comunidade da Rocketseat'
 ];
+
+function renderTodos() {
+    for (todo of todos) {
+        let todoElement = document.createElement('li');
+        let todoText = document.createTextNode(todo);
+
+        todoElement.appendChild(todoText);
+        listElement.appendChild(todoElement);
+    }
+}
+
+renderTodos();
